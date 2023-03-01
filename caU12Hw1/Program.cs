@@ -13,8 +13,8 @@ using System.Threading.Tasks;
 
 namespace caU12Hw1
 {
-    
-    
+
+
     internal class Program
     {
         static string UnitName = "Un:12";
@@ -26,7 +26,7 @@ namespace caU12Hw1
         static bool rqRestart = false;
         static bool rqExit = false;
         static List<User> Users;
-        
+
         static protected string UnTitle
         {
             get
@@ -64,26 +64,48 @@ namespace caU12Hw1
                 Console.WriteLine(user);
             }
         }
-        static void UserEntry(string userName) // UserEntry(User user)
+        static void UserEntry(User currUser) // UserEntry(User user)
         {
-            Console.WriteLine("Приветствуем вас: {0}", userName);
-            
+            if (!currUser.IsPremium) ShowAds();
+            Console.WriteLine("{0}> :Приветствуем вас {1}", currUser.Login, currUser.Name);
+
         }
-        static bool FindUser(string userLog) // UserEntry(User user)
+        static User FindUser(string userLog) // UserEntry(User user)
         {
             //Console.WriteLine("Приветствуем вас: {0}", userLog);
             Console.WriteLine("\nTest Exists: User with Login= {0}", userLog);
-            if (Users.Exists(x => x.Login.Equals(userLog))) { Console.WriteLine("Yes Exists: User with Login= {0}", userLog); return true; }
-            else { Console.WriteLine("NOT Exists: User with Login= {0}", userLog); return false;}
+            if (Users.Exists(x => x.Login.Equals(userLog)))
+            {
+                //Console.WriteLine("Yes Exists: User with Login= {0}", userLog);
+                var CurrUser = Users.Find(x => x.Login.Equals(userLog));
+                //Console.WriteLine("Yes Exists: User with Login= {0} has index {1}", userLog, Users.IndexOf(CurrUser));  
+
+                return CurrUser;
+            }
+            else
+            {
+                //Console.WriteLine("NOT Exists: User with Login= {0}", userLog); 
+                return null;
+            }
 
 
         }
-        static void CheckUserLog(string userLog) // UserEntry(User user)
+        static bool CheckUserLogin(string userLog) // UserEntry(User user)
         {
-            Console.WriteLine("Приветствуем Login: {0}", userLog);
-            UserEntry(userLog);
+            //проверка userLogin на корректность (пока опущена , но поэтому спрятано в Try) и существование в списке пользователей
+            if (Users.Exists(x => x.Login.Equals(userLog)))
+            {
+                Console.WriteLine("Yes Exists: User with Login= {0}", userLog);
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("NOT Exists: User with Login= {0}", userLog);
+                return false;
+            }
         }
-        static void ShowLogin() { 
+        static void ShowLogin()
+        {
             Console.WriteLine("\n{0}: Введите login (пользователя) состоящий из не менее чем 3-х символов." +
                 " \n Ведите следующие символы для действий \n\t1: просмотр списка пользователей\n\t3/q/Q:  выход ", Promt);
         }
@@ -91,18 +113,18 @@ namespace caU12Hw1
 
         static void Main(string[] args)
         {
- 
+
             Console.WriteLine("{0}|{1}:Startig ", UnTitle, ExTitle);
-            Console.WriteLine("{0} ", Promt);            
-            
-             Users = new List <User> ();
+            Console.WriteLine("{0} ", Promt);
+
+            Users = new List<User>();
             Users.Add(new User("Ron", "Paul", false));
             Users.Add(new User("Mary", "Aid", true));
             Users.Add(new User("Carl", "May", true));
             Users.Add(new User("Clara", "Coral", false));
 
             ShowUsers();
- 
+
 
             while (!rqExit)
             {
@@ -151,40 +173,41 @@ namespace caU12Hw1
 
 
             else
-            { Console.WriteLine("Ищем пользователя");
-                
+            {
+                Console.WriteLine("Ищем пользователя"); // Debug 
+
 
                 try
                 {
                     //string strName = "Ron";
                     //Console.WriteLine("\nTest Exists: User with Login= {0}", strName);
-                    if (FindUser(userEntry)) UserEntry(userEntry);
+                    if (CheckUserLogin(userEntry))
+                    {
+                        UserEntry(FindUser(userEntry));
+                    }
                     else { Console.WriteLine("NOT Exists: User with Login= {0}", userEntry); }
-                
-                UserEntry(userEntry);
-                    //var fnUser = Users.Find(userEntry);
-                    //UserEntry(fnUser.Name);
 
-            //catch (ErrUserEentryExeption exc)
-            //{
-            //    Console.ForegroundColor = ConsoleColor.Red;
-            //    Console.WriteLine("{0}: Get ErrUserEentryExeption. Msg:{1}", Promt, exc.Message);
-            //}
+                    //catch (ErrUserEentryExeption exc)
+                    //{
+                    //    Console.ForegroundColor = ConsoleColor.Red;
+                    //    Console.WriteLine("{0}: Get ErrUserEentryExeption. Msg:{1}", Promt, exc.Message);
+                    //}
                 }
 
-            catch (Exception ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("{0}: Get Exception.", Promt, ex.Message);
+                catch (Exception ex) // специальный тип исключения не делаю, лениво
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("{0}: Get Exception.", Promt, ex.Message);
+                    Console.WriteLine("  Get Exception {0}", ex.StackTrace);
+                }
+                finally
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
             }
-            finally
-            {
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-            }
-                    
-                    
+
+
         }
     }
-    
+
 }
