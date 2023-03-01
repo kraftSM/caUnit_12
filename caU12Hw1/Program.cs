@@ -88,6 +88,7 @@ namespace caU12Hw1
                 return null;
             }         
  
+
         }
         static bool CheckUserLogin(string userLog) // UserEntry(User user)
         {
@@ -193,7 +194,7 @@ namespace caU12Hw1
                     //}
                 }
 
-                catch (Exception ex) // специальный тип исключения не делаю, лениво
+                catch (Exception ex) // специальный тип исключения не делаю, смысл (?)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("{0}: Get Exception.", Promt, ex.Message);
