@@ -73,7 +73,7 @@ namespace caU12Hw1
         static User FindUser(string userLog) // UserEntry(User user)
         {
             //Console.WriteLine("Приветствуем вас: {0}", userLog);
-            Console.WriteLine("\nTest Exists: User with Login= {0}", userLog);
+            //Console.WriteLine("\nTest Exists: User with Login= {0}", userLog);
             if (Users.Exists(x => x.Login.Equals(userLog)))
             {
                 //Console.WriteLine("Yes Exists: User with Login= {0}", userLog);
@@ -86,16 +86,15 @@ namespace caU12Hw1
             {
                 //Console.WriteLine("NOT Exists: User with Login= {0}", userLog); 
                 return null;
-            }
-
-
+            }         
+ 
         }
         static bool CheckUserLogin(string userLog) // UserEntry(User user)
         {
             //проверка userLogin на корректность (пока опущена , но поэтому спрятано в Try) и существование в списке пользователей
             if (Users.Exists(x => x.Login.Equals(userLog)))
             {
-                Console.WriteLine("Yes Exists: User with Login= {0}", userLog);
+                //Console.WriteLine("Yes Exists: User with Login= {0}", userLog);
                 return true;
             }
             else
@@ -185,7 +184,7 @@ namespace caU12Hw1
                     {
                         UserEntry(FindUser(userEntry));
                     }
-                    else { Console.WriteLine("NOT Exists: User with Login= {0}", userEntry); }
+                    //else { Console.WriteLine("NOT Exists: User with Login= {0}", userEntry); }
 
                     //catch (ErrUserEentryExeption exc)
                     //{
