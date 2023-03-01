@@ -88,6 +88,13 @@ namespace caU12Hw1
                 return null;
             }
 
+                return CurrUser; 
+            }
+            else { 
+                //Console.WriteLine("NOT Exists: User with Login= {0}", userLog); 
+                return null;
+            }
+
 
         }
         static bool CheckUserLogin(string userLog) // UserEntry(User user)
