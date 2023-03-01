@@ -91,7 +91,7 @@ namespace caU12Hw1
             Console.WriteLine("\nTest Exists: User with Login= {0}", userLog);
             if (Users.Exists(x => x.Login.Equals(userLog))) { Console.WriteLine("Yes Exists: User with Login= {0}", userLog); return true; }
             else { Console.WriteLine("NOT Exists: User with Login= {0}", userLog); return false;}
-            
+
 
         }
         static void CheckUserLog(string userLog) // UserEntry(User user)
@@ -124,6 +124,8 @@ namespace caU12Hw1
             {
                 GetUserChoice();
             }
+
+
 
             Console.WriteLine("\n{0}: Finishing.", ExTitle);
             Console.WriteLine("{0}: Finished.\nPress any key.", UnTitle);
@@ -181,22 +183,22 @@ namespace caU12Hw1
                     //var fnUser = Users.Find(userEntry);
                     //UserEntry(fnUser.Name);
 
-                    //catch (ErrUserEentryExeption exc)
-                    //{
-                    //    Console.ForegroundColor = ConsoleColor.Red;
-                    //    Console.WriteLine("{0}: Get ErrUserEentryExeption. Msg:{1}", Promt, exc.Message);
-                    //}
+            //catch (ErrUserEentryExeption exc)
+            //{
+            //    Console.ForegroundColor = ConsoleColor.Red;
+            //    Console.WriteLine("{0}: Get ErrUserEentryExeption. Msg:{1}", Promt, exc.Message);
+            //}
                 }
 
-                catch (Exception ex)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("{0}: Get Exception.", Promt, ex.Message);
-                }
-                finally
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("{0}: Get Exception.", Promt, ex.Message);
+            }
+            finally
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+            }
             }
                     
                     
