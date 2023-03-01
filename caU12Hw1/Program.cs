@@ -13,23 +13,7 @@ using System.Threading.Tasks;
 
 namespace caU12Hw1
 {
-    public class User
-    {
-        public string Login { get; set; }
-        public string Name { get; set; }
-        public bool IsPremium { get; set; }
-        public User(string login, string name, bool isPremium)
-        {
-            Login = login;
-            Name = name;
-            IsPremium = isPremium;
-
-        }
-        public override string ToString()
-        {
-            return "Login: " + Login + "   Name: " + Name;
-        }
-    }
+    
     
     internal class Program
     {
@@ -124,8 +108,6 @@ namespace caU12Hw1
             {
                 GetUserChoice();
             }
-
-
 
             Console.WriteLine("\n{0}: Finishing.", ExTitle);
             Console.WriteLine("{0}: Finished.\nPress any key.", UnTitle);

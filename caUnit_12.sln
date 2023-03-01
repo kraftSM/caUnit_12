@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "caUnit_12", "caUnit_12\caUnit_12.csproj", "{8C374AAA-C716-4508-BF6B-0FB648EC6E69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "caU12Hw1", "caU12Hw1\caU12Hw1.csproj", "{9B01AD30-1632-4E3B-AE37-4032446A28E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit12.Hw1", "caU12Hw1\Unit12.Hw1.csproj", "{9B01AD30-1632-4E3B-AE37-4032446A28E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
